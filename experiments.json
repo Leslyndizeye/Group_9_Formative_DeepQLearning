@@ -1,0 +1,26 @@
+{
+    "tracked_experiments": 6,
+    "experiments": [
+        {
+            "tracked_experiments": 1,
+            "experiments": [
+                {
+                    "member_name": "Ndizeye Lesly",
+                    "experiment_number": 1,
+                    "timestamp": "2025-11-14T02:35:17.274882",
+                    "hyperparameters": {
+                        "learning_rate": 0.0001,
+                        "gamma": 0.99,
+                        "batch_size": 32,
+                        "epsilon_start": 1.0,
+                        "epsilon_end": 0.05,
+                        "epsilon_decay": 0.1
+                    },
+                    "observed_behavior": "Agent trained successfully",
+                    "final_reward": null,
+                    "notes": "Baseline hyperparameters"
+                }
+            ]
+        }
+    ]
+}
