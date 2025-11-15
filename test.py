@@ -14,7 +14,7 @@ from experiment_tracker import ExperimentTracker
 
 MEMBER_NAME = "Ndizeye Lesly"
 
-LEARNING_RATE = 1e-3
+LEARNING_RATE = 1e-4
 GAMMA = 0.99
 BATCH_SIZE = 32
 EPSILON_START = 1.0
