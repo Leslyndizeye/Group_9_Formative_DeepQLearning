@@ -22,7 +22,7 @@ EPSILON_END = 0.05
 EXPLORATION_FRACTION = 0.1
 
 EXPERIMENT_NUMBER = 2
-EXPERIMENT_DESCRIPTION = "learning rate =1e-3"
+EXPERIMENT_DESCRIPTION = "Baseline CNN training"
 
 
 class RewardPlotCallback(BaseCallback):
