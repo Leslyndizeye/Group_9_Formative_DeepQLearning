@@ -14,15 +14,15 @@ from experiment_tracker import ExperimentTracker
 
 MEMBER_NAME = "Ndizeye Lesly"
 
-LEARNING_RATE = 1e-4
+LEARNING_RATE = 1e-3
 GAMMA = 0.99
 BATCH_SIZE = 32
 EPSILON_START = 1.0
 EPSILON_END = 0.05
 EXPLORATION_FRACTION = 0.1
 
-EXPERIMENT_NUMBER = 1
-EXPERIMENT_DESCRIPTION = "Baseline CNN training"
+EXPERIMENT_NUMBER = 2
+EXPERIMENT_DESCRIPTION = "learning rate =1e-3"
 
 
 class RewardPlotCallback(BaseCallback):
