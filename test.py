@@ -12,6 +12,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 import matplotlib.pyplot as plt
 from experiment_tracker import ExperimentTracker
 
+#MEMBER INFO
 MEMBER_NAME = "Ndizeye Lesly"
 
 LEARNING_RATE = 1e-4
