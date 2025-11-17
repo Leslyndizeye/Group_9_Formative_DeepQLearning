@@ -17,7 +17,7 @@ from experiment_tracker import ExperimentTracker
 MEMBER_NAME = "Nicolas Muhigi"
 
 # HYPERPARAMETERS
-TOTAL_EXPERIMENTS = 9  
+TOTAL_EXPERIMENTS = 9
 TRAINING_STEPS = 300000
 
 # Experiment hyperparameters (index 0 = Experiment 2)
@@ -27,6 +27,7 @@ BATCH_SIZES = [64, 8, 128, 32, 32, 48, 32, 64, 32]
 EPSILON_STARTS = [1.0, 1.0, 1.0, 0.5, 1.0, 1.0, 1.0, 0.3, 1.0]
 EPSILON_ENDS = [0.2, 0.05, 0.01, 0.05, 0.6, 0.02, 0.005, 0.01, 0.02]
 EXPLORATION_FRACTIONS = [0.15, 0.6, 0.05, 0.05, 0.8, 0.9, 0.08, 0.05, 0.15]
+
 EXPERIMENT_DESCRIPTIONS = [
     "High learning rate prioritizing short-term rewards; fast but unstable learning",
     "Tiny batch size with long exploration phase; noisy but robust learning",
@@ -39,7 +40,10 @@ EXPERIMENT_DESCRIPTIONS = [
     "Balanced baseline setup; smooth epsilon decay with high gamma"
 ]
 
+# -----------------------------------------------------
 # Callback to track rewards and save plots
+# -----------------------------------------------------
+
 class RewardPlotCallback(BaseCallback):
     def __init__(self, verbose=0):
         super().__init__(verbose)
@@ -63,9 +67,13 @@ class RewardPlotCallback(BaseCallback):
         plt.savefig(f"plots/exp{exp_number}_{name.replace(' ', '_')}.png")
         plt.close()
 
-# Create DQN agent
+# -----------------------------------------------------
+# Agent creation
+# -----------------------------------------------------
+
 def create_agent():
     print(f"\nRunning Experiment {EXPERIMENT_NUMBER}: {EXPERIMENT_DESCRIPTION}")
+
     env = make_atari_env("ALE/Pong-v5", n_envs=1, seed=42)
     env = VecFrameStack(env, n_stack=4)
 
@@ -84,15 +92,22 @@ def create_agent():
     )
     return env, model
 
-# Train the agent
+# -----------------------------------------------------
+# Training
+# -----------------------------------------------------
+
 def train(model, env, steps=TRAINING_STEPS):
     callback = RewardPlotCallback()
     model.learn(total_timesteps=steps, callback=callback, progress_bar=True)
     return model, callback
 
-# Save model, plot, and record experiment
+# -----------------------------------------------------
+# Save results
+# -----------------------------------------------------
+
 def save_results(model, env, callback):
     os.makedirs("models", exist_ok=True)
+
     model_path = f"models/dqn_exp{EXPERIMENT_NUMBER}_{MEMBER_NAME.replace(' ', '_')}"
     model.save(model_path)
 
@@ -111,22 +126,20 @@ def save_results(model, env, callback):
         notes=EXPERIMENT_DESCRIPTION,
     )
 
-    # Free memory
     env.close()
-    del env
-    del model
-    del callback
+    del env, model, callback
     gc.collect()
 
-# Main loop: run all experiments
+# -----------------------------------------------------
+# Main Loop
+# -----------------------------------------------------
+
 if __name__ == "__main__":
     for i in range(TOTAL_EXPERIMENTS):
         try:
-            # Make EXPERIMENT_NUMBER global so functions can access it
             global EXPERIMENT_NUMBER
-            EXPERIMENT_NUMBER = i + 2  # Experiments 2–10
+            EXPERIMENT_NUMBER = i + 2  # your numbering: 2–10
 
-            # Assign other hyperparameters
             EXPERIMENT_DESCRIPTION = EXPERIMENT_DESCRIPTIONS[i]
             LEARNING_RATE = LEARNING_RATES[i]
             GAMMA = GAMMAS[i]
@@ -135,12 +148,12 @@ if __name__ == "__main__":
             EPSILON_END = EPSILON_ENDS[i]
             EXPLORATION_FRACTION = EXPLORATION_FRACTIONS[i]
 
-            # Run experiment
             env, agent = create_agent()
             agent, callback = train(agent, env)
             save_results(agent, env, callback)
 
             print(f"\nExperiment {EXPERIMENT_NUMBER} finished successfully.\n")
+
         except Exception as e:
             print(f"Error in Experiment {EXPERIMENT_NUMBER}: {e}")
             raise

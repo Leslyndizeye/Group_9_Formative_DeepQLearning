@@ -1,0 +1,9 @@
+stable-baselines3[extra]
+gymnasium[atari]
+ale-py
+matplotlib
+fpdf
+torch
+
+# Optional (Atari ROM management) - may require additional system setup
+# autorom[accept-rom-license]
