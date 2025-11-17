@@ -1,4 +1,4 @@
-# Deep Q-Learning for Atari [Game Name]
+# Deep Q-Learning for Atari [Pong]
 
 ## Overview
 This project implements a Deep Q-Network (DQN) agent to play the Atari **[Game Name]** using Stable Baselines3 and Gymnasium. The implementation includes:
@@ -9,12 +9,12 @@ This project implements a Deep Q-Network (DQN) agent to play the Atari **[Game N
 - Video demonstration of trained agent gameplay
 
 ## Team Members
-- **[Member 1 Name]**
-- **[Member 2 Name]**
-- **[Member 3 Name]**
-- **[Member 4 Name]**
+- **Nicolas Muhigi**
+- **Leslie Isaro**
+- **Deolinda Bogore**
+- **Lesly Ndizeye**
 
-## Environment: [Game Name]
+## Environment: 
 
 **Game Description**: [Brief description of the Atari game - what the objective is, how it's played, what makes it challenging]
 
@@ -169,74 +169,6 @@ Nicolas conducted 10 comprehensive hyperparameter experiments exploring extreme 
 | 8   | 0.0001  | 0.99  | 32     | 1.0        | 0.005    | 0.1        | Very greedy final policy; heavy exploitation |
 | 9   | 0.0008  | 0.92  | 64     | 0.3        | 0.01     | 0.1        | Low exploration and high LR; unstable but fast learner |
 | 10  | 0.0001  | 0.99  | 32     | 1.0        | 0.02     | 0.1        | Balanced LR and gamma; strong exploration schedule |
-
-
-#### Observed Results
-
-| Exp | Training Time | Status | Key Findings |
-|-----|---------------|--------|--------------|
-| 1 | ~[X] min | Completed | Ultra-low LR (1e-6) resulted in extremely slow learning; agent barely improved from random policy |
-| 2 | ~[X] min | Completed | Aggressive LR (1e-3) with low gamma showed fast initial learning but high instability; frequent divergence |
-| 3 | ~[X] min | Completed | Tiny batch (8) created noisy gradients but surprisingly robust; exploration helped stabilize learning |
-| 4 | ~[X] min | Completed | Large batch (128) provided very stable training; slow per-step updates but consistent improvement |
-| 5 | ~[X] min | Completed | Semi-greedy start (ε=0.5) with ultra-high gamma (0.999) favored long-term planning; strategic gameplay |
-| 6 | ~[X] min | Completed | High final epsilon (0.6) maintained exploration throughout; discovered diverse strategies but lower final score |
-| 7 | ~[X] min | Completed | Extremely slow epsilon decay resulted in mostly random behavior; insufficient exploitation time |
-| 8 | ~[X] min | Completed | Very low final epsilon (0.005) created highly greedy policy; strong exploitation but potentially suboptimal |
-| 9 | ~[X] min | Completed | High LR (8e-4) with low gamma (0.92) showed extreme instability; learning collapsed multiple times |
-| 10 | ~[X] min | Completed | Balanced configuration performed consistently well; best trade-off between exploration and exploitation |
-
-#### Analysis Summary
-
-**Learning Rate Impact:**
-- **Ultra-low (1e-6)**: Impractically slow; agent showed minimal improvement even after 500k timesteps
-- **Low (2e-5 to 7e-5)**: Stable but slow convergence; suitable for very risk-averse training
-- **Moderate (1e-4 to 2e-4)**: Sweet spot for this environment; balanced speed and stability
-- **High (3e-4 to 8e-4)**: Fast learning but increasing instability; useful for quick prototyping
-- **Very high (1e-3)**: Extreme instability; learning frequently diverged despite large batch size
-- **Recommendation**: Use 1e-4 as baseline; increase to 2e-4 for faster convergence if stable
-
-**Gamma Effects:**
-- **Low gamma (0.9-0.92)**: Heavily prioritized immediate rewards; reactive gameplay but poor long-term strategy
-- **Medium gamma (0.96-0.98)**: Balanced short and long-term rewards; decent performance
-- **High gamma (0.99)**: Strong strategic planning; best overall performance
-- **Very high gamma (0.995-0.999)**: Extremely long-term focus; beneficial for games requiring complex strategies
-- **Observation**: Higher gamma values consistently outperformed lower ones in this environment, suggesting strategic planning is crucial
-
-**Batch Size Trade-offs:**
-- **Tiny (8)**: High gradient noise but surprisingly stable with proper exploration; 15-20% faster per timestep
-- **Small (32)**: Good balance of speed and stability; standard choice
-- **Medium (48-64)**: Slightly more stable than 32; minimal speed difference
-- **Large (128)**: Very stable gradients but 40-50% slower per timestep; diminishing returns on stability
-- **Recommendation**: Use 32 for most experiments; increase to 64-128 only if experiencing severe instability
-
-**Exploration Strategy:**
-- **Semi-greedy start (ε=0.5)**: Reduced early random exploration; faster initial learning but may miss optimal strategies
-- **Standard start (ε=1.0)**: Full random exploration initially; discovered more diverse strategies
-- **Low final epsilon (0.005)**: Nearly pure exploitation; maximized known strategies
-- **Moderate final epsilon (0.02-0.05)**: Small exploration maintained; prevented premature convergence
-- **High final epsilon (0.6)**: Excessive exploration; agent never fully exploited learned strategies
-- **Key Finding**: Final epsilon between 0.01-0.05 provided best results; maintained slight exploration without sacrificing performance
-
-**Extreme Configuration Insights:**
-- **Experiment 1 (Ultra-conservative)**: Demonstrated lower bound of useful learning rates (1e-6 too slow)
-- **Experiment 2 (Aggressive-fast)**: Showed instability threshold for high LR with low gamma
-- **Experiment 6 (High-exploration)**: Proved excessive exploration (ε_end=0.6) hurts final performance
-- **Experiment 9 (Fast-unstable)**: Confirmed that combining high LR with low gamma causes severe instability
-- **Experiment 10 (Balanced-optimal)**: Validated standard hyperparameters work well for this environment
-
-**Key Insights:**
-- This environment benefits significantly from **high gamma values** (0.99+) for strategic planning
-- **Learning rate** is the most sensitive hyperparameter; small changes (1e-4 to 2e-4) have large effects
-- **Batch size** offers a speed-stability trade-off; 32 is optimal for most cases
-- **Exploration schedule** should decay to 0.01-0.02, not lower or higher
-- **Conservative approaches** (low LR, high gamma, moderate batch) generally outperformed aggressive ones
-- Testing extreme values revealed operational boundaries: LR must stay in [5e-5, 5e-4] range for stability
-
-**Best Configuration:**
-Based on these experiments, **Experiment 10 (Balanced-Optimal)** emerged as the winner with:
-- LR=1e-4, γ=0.99, batch=32, ε_start=1.0, ε_end=0.02, exp_frac=0.1
-- This configuration combined stable learning, strategic planning, and proper exploration-exploitation balance
 
 **To Run Nicolas's Experiments:**
 ```bash
