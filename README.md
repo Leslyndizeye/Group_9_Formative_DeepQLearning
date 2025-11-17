@@ -177,18 +177,64 @@ python nicolas_experiment.py --timesteps 500000
 
 ---
 
-### [Member 2 Name]'s Experiments
+### Leslie's Experiments
 
-#### Experimental Design
-[Description of experimental approach]
+| **Exp #** | **Description** | **Learning Rate** | **Gamma (Discount Factor)** | **Batch Size** | **Epsilon Start** | **Epsilon End** | **Exploration Fraction (Decay)** | **Timesteps** | **Noted Behavior (in the environment)** |
+|:--:|:--|--:|--:|--:|--:|--:|--:|--:|--|
+| **1** | Lower learning rate + longer exploration + lower epsilon end | 5e-5 | 0.99 | 32 | 1.0 | 0.02 | 0.20 | 200,000 | Agent moved randomly and rarely hit the ball. Learning was very slow due to the small learning rate and long exploration period. No consistent improvement across episodes. |
+| **2** | Mid learning rate, higher gamma, bigger batch | 7.5e-5 | 0.995 | 64 | 1.0 | 0.02 | 0.30 | 100,000 | Paddle tracked the ball slightly better but still missed most shots. Larger batch size made training more stable but slower. Learning limited by shorter training time. |
+| **3** | Higher gamma with slightly longer exploration | 1e-4 | 0.997 | 32 | 1.0 | 0.03 | 0.15 | 200,000 | Agent began anticipating ball direction and managed a few successful volleys. Learning was slow but steady, showing better timing in some rallies. |
+| **4** | Small batch size with faster target updates | 1e-4 | 0.99 | 16 | 1.0 | 0.05 | 0.10 | 50,000 | Paddle movements were jittery and inconsistent. The agent frequently overreacted and lost track of the ball. Learning was unstable and poor. |
+| **5** | Lower gamma (focus on short-term reward) | 1e-4 | 0.95 | 32 | 1.0 | 0.05 | 0.10 | 50,000 | The agent reacted quickly to the ball but failed to maintain long rallies. Short-sighted strategy caused erratic movements and frequent losses. |
+| **6** | Higher learning rate with standard gamma and larger batch size | 2.5e-4 | 0.99 | 64 | 1.0 | 0.05 | 0.30 | 50,000 | Learning was faster in early episodes but unstable overall. The agent occasionally defended well but also made sudden, erratic moves that led to missed returns. |
+| **7** | Higher gamma with short exploration window | 1e-4 | 0.999 | 32 | 1.0 | 0.05 | 0.05 | 50,000 | The agent showed smoother and more deliberate movements, tracking the ball more effectively and returning several volleys per episode. Strong coordination and visible improvement. |
+| **8** | Lower learning rate | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 0.10 | 200,000 | Agent made some progress early but quickly plateaued. Reduced exploration limited its ability to adapt and improve later in training. |
+| **9** | High gradient steps per update (more optimization per batch) | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 0.10 | 200,000 | Learning appeared faster and more confident within the same number of steps. Agent followed the ball more consistently but slightly over-adjusted during quick rallies. |
+| **10** | Low gamma with fast updates (**Best Model**) | 2e-4 | 0.97 | 32 | 1.0 | 0.03 | 0.10 | 200,000 | Agent displayed the most consistent and intelligent behavior — reacted quickly, maintained rallies, and intercepted most balls. Demonstrated reliable paddle control and adaptation. **Best performing model overall.** |
 
-[Copy the same table structure as Member 1]
+---
 
-#### Observed Results
-[Copy the same results table structure]
+### Insights and Discussion
 
-#### Analysis Summary
-[Copy the same analysis structure]
+1. **Learning Rate**  
+   - A very low learning rate (e.g., 5e-5 in Experiment 1) led to slow, almost static behavior — the agent barely improved across episodes.  
+   - Moderate learning rates (1e-4 to 2e-4) produced much better results, with the agent learning faster and achieving smoother paddle control.  
+   - A high learning rate (2.5e-4) made training faster initially but unstable, causing erratic paddle motion.  
+   → *Conclusion:* Moderate learning rates balance exploration and convergence speed effectively.
+
+2. **Gamma (Discount Factor)**  
+   - Lower gamma values (0.95–0.97) made the agent more reactive to immediate rewards, improving reflexes but sometimes ignoring long-term play.  
+   - Higher gamma values (0.997–0.999) encouraged long-term reward optimization, allowing smoother tracking and better anticipation of ball direction.  
+   → *Conclusion:* Gamma around **0.97–0.999** yielded the most balanced and strategic play, depending on learning rate and exploration.
+
+3. **Batch Size**  
+   - Smaller batch sizes (16) introduced high variance in updates, making learning noisy and unpredictable.  
+   - Larger batch sizes (64) stabilized training but slowed convergence.  
+   - A medium batch size (32) proved the most reliable — enough to smooth learning while maintaining steady updates.
+
+4. **Exploration (Epsilon Schedule)**  
+   - Too high exploration fractions (0.3–0.4) delayed improvement as the agent kept acting randomly.  
+   - Too low (0.05) forced early exploitation, sometimes leading to stagnation.  
+   - Balanced decay values around **0.1–0.15** allowed the agent to explore enough before focusing on learned strategies.
+
+5. **Timesteps and Training Duration**  
+   - Short runs (50,000–100,000) were insufficient for meaningful learning; the agent stayed nearly random.  
+   - Longer runs (200,000) allowed noticeable behavioral improvement — better positioning and consistent rallies.  
+   → *Conclusion:* Increasing timesteps beyond 200k would likely yield even stronger learning.
+
+6. **Best Model (Experiment 10)**  
+   - The agent trained with **learning rate = 2e-4**, **gamma = 0.97**, and **exploration fraction = 0.10** showed the best paddle control, stable tracking, and longest volleys.  
+   - It balanced reaction speed and consistency better than any other configuration.  
+   - This combination’s faster updates and lower gamma helped the agent adapt quickly and avoid getting stuck in suboptimal strategies.
+
+---
+
+### Overall Takeaways
+- **Stable learning** required a balance between exploration and exploitation — excessive exploration caused random movement, while premature exploitation froze learning.  
+- **Learning rate and gamma** were the most influential parameters. Both had to be tuned together for stability and performance.  
+- **Longer training time** (≥ 200,000 steps) was essential; shorter runs barely developed meaningful policies.  
+- **Experiment 10** achieved the best results both visually and behaviorally, showing the agent effectively learning to anticipate ball motion and sustain rallies.
+
 
 ---
 
