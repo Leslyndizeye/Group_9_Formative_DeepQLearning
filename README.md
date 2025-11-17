@@ -241,13 +241,15 @@ python play.py --model-path "models/Nicolas Muhigi/dqn_exp3_Nicolas_Muhigi.zip"
 
 ---
 
-## Team Collaboration Notes
+### Team Collaboration Notes
 
-### Division of Work
-- **[Member 1]**: [Specific responsibilities - e.g., "Baseline experiments and learning rate analysis"]
-- **[Member 2]**: [Specific responsibilities]
-- **[Member 3]**: [Specific responsibilities]
-- **[Member 4]**: [Specific responsibilities]
+**Division of Work**
+
+- **Lesly Ndizeye**: Task 1 – Implemented `train.py`, conducted DQN training experiments, recorded hyperparameter tuning results, and documented observed behaviors for all 10 experiments.
+- **Deolinda Bogore**: Task 1 – Training script implementation, ran additional experiments for hyperparameter tuning, and helped compile the training results table.
+- **Leslie Isaro**: Task 2 – Implemented `play.py`, loaded trained DQN models, evaluated agent performance using GreedyQPolicy, and recorded final gameplay observations.
+- **Nicolas Muhigi**: Task 2 – Loading models and running evaluation episodes, visualized gameplay output, and helped prepare insights and results for presentation.
+
 
 ---
 
