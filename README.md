@@ -108,17 +108,6 @@ python train.py --policy CnnPolicy --timesteps 500000
 python train.py --policy MlpPolicy --timesteps 500000
 ```
 
-#### Custom Hyperparameters Example:
-```bash
-python train.py \
-  --timesteps 500000 \
-  --lr 0.0001 \
-  --gamma 0.99 \
-  --batch-size 32 \
-  --eps-start 1.0 \
-  --eps-end 0.01 \
-  --exp-fraction 0.1
-```
 
 **Key Training Logs:**
 - Episode rewards (reward trends)
@@ -161,7 +150,7 @@ Videos will be saved in the `videos/` directory.
 ### Nicolas Muhigi's Experiments
 
 #### Experimental Design
-Nicolas conducted 10 comprehensive hyperparameter experiments exploring extreme learning rate ranges, diverse gamma values, and varied exploration strategies. The experiments systematically tested the boundaries of stable DQN training, from ultra-conservative to highly aggressive configurations.
+I conducted 10 comprehensive hyperparameter experiments exploring extreme learning rate ranges, diverse gamma values, and varied exploration strategies. The experiments systematically tested the boundaries of stable DQN training, from ultra-conservative to highly aggressive configurations.
 
 ### Nicolas Muhigi — Experiments
 
@@ -258,9 +247,6 @@ Optimal hyperparameters are likely moderate learning rates (0.0002–0.0005) and
 The epsilon schedule did not allow enough exploration due to fast decay relative to the short training steps.
 
 Overall, the agent mostly collapsed or performed poorly, but the experiments provide insights into hyperparameter sensitivity and the effect of learning rate, gamma, batch size, and epsilon on performance
----
-
-### [Ndizeye Lesly]'s Experiments
 
 ---
 
@@ -336,29 +322,6 @@ A video demonstration of the trained agent is included showing:
 
 ---
 
-## DQN Architecture
-
-### Network Structure
-- **Policy**: CNNPolicy (Convolutional Neural Network)
-- **Input**: 84x84x4 grayscale images (4 stacked frames)
-- **Convolutional Layers**:
-  - Conv1: 32 filters, 8x8 kernel, stride 4, ReLU
-  - Conv2: 64 filters, 4x4 kernel, stride 2, ReLU
-  - Conv3: 64 filters, 3x3 kernel, stride 1, ReLU
-- **Fully Connected**: 512 units, ReLU
-- **Output Layer**: Q-values for each of [N] actions
-
-### Key Features
-- **Experience Replay**: Buffer size of 100,000 transitions
-- **Target Network**: Updated every 1,000 steps
-- **Double DQN**: Reduces overestimation bias
-- **Frame Stacking**: 4 consecutive frames for temporal information
-- **Frame Skipping**: Action repeated every 4 frames
-- **Epsilon-Greedy Exploration**: Decays from 1.0 to 0.01
-- **Reward Clipping**: [Specify if applied or not]
-
----
-
 ## Key Findings & Conclusions
 
 ### Overall Hyperparameter Analysis
@@ -409,62 +372,6 @@ numpy
 
 ---
 
-## Project Structure
-```
-Group_9_Formative_DeepQLearning/
-├── README.md
-├── requirements.txt
-├── train.py
-├── play.py
-├── check_setup.py
-├── [member1]_experiment.py
-├── [member2]_experiment.py
-├── [member3]_experiment.py
-├── [member4]_experiment.py
-├── dqn_model.zip
-├── logs/
-│   └── dqn_atari/
-│       └── progress.csv
-├── models/
-│   ├── experiment_01/
-│   ├── experiment_02/
-│   └── ...
-└── videos/
-    └── [recorded gameplay videos]
-```
 
----
-
-## Troubleshooting
-
-### Common Issues
-
-**Issue**: `gymnasium[atari]` installation fails
-- **Solution**: Try `pip install "gymnasium[atari,accept-rom-license]"` with quotes
-
-**Issue**: No display for rendering
-- **Solution**: Make sure you have a display available. For headless servers, use virtual display (xvfb)
-
-**Issue**: CUDA/GPU errors
-- **Solution**: Install PyTorch with CPU support: `pip install torch --index-url https://download.pytorch.org/whl/cpu`
-
----
-
-## References
-
-- [Stable Baselines3 Documentation](https://stable-baselines3.readthedocs.io/)
-- [Gymnasium Atari Environments](https://gymnasium.farama.org/environments/atari/)
-- [Playing Atari with Deep Reinforcement Learning (Mnih et al., 2013)](https://arxiv.org/abs/1312.5602)
-- [Human-level control through deep reinforcement learning (Mnih et al., 2015)](https://www.nature.com/articles/nature14236)
-
----
-
-## License
-This project is for educational purposes as part of the Deep Q-Learning Formative Assignment.
-
----
-
-## Acknowledgments
-- Course Instructor: Marvin Ogore
 - Stable Baselines3 Team
 - OpenAI Gymnasium Team
