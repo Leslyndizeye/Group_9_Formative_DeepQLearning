@@ -193,18 +193,19 @@ python play.py --model-path "models/Nicolas Muhigi/dqn_exp3_Nicolas_Muhigi.zip"
 
 ### Leslie's Experiments
 
-| **Exp #** | **Description** | **Learning Rate** | **Gamma (Discount Factor)** | **Batch Size** | **Epsilon Start** | **Epsilon End** | **Exploration Fraction (Decay)** | **Timesteps** | **Noted Behavior (in the environment)** |
-|:--:|:--|--:|--:|--:|--:|--:|--:|--:|--|
-| **1** | Lower learning rate + longer exploration + lower epsilon end | 5e-5 | 0.99 | 32 | 1.0 | 0.02 | 0.20 | 200,000 | Agent moved randomly and rarely hit the ball. Learning was very slow due to the small learning rate and long exploration period. No consistent improvement across episodes. |
-| **2** | Mid learning rate, higher gamma, bigger batch | 7.5e-5 | 0.995 | 64 | 1.0 | 0.02 | 0.30 | 100,000 | Paddle tracked the ball slightly better but still missed most shots. Larger batch size made training more stable but slower. Learning limited by shorter training time. |
-| **3** | Higher gamma with slightly longer exploration | 1e-4 | 0.997 | 32 | 1.0 | 0.03 | 0.15 | 200,000 | Agent began anticipating ball direction and managed a few successful volleys. Learning was slow but steady, showing better timing in some rallies. |
-| **4** | Small batch size with faster target updates | 1e-4 | 0.99 | 16 | 1.0 | 0.05 | 0.10 | 50,000 | Paddle movements were jittery and inconsistent. The agent frequently overreacted and lost track of the ball. Learning was unstable and poor. |
-| **5** | Lower gamma (focus on short-term reward) | 1e-4 | 0.95 | 32 | 1.0 | 0.05 | 0.10 | 50,000 | The agent reacted quickly to the ball but failed to maintain long rallies. Short-sighted strategy caused erratic movements and frequent losses. |
-| **6** | Higher learning rate with standard gamma and larger batch size | 2.5e-4 | 0.99 | 64 | 1.0 | 0.05 | 0.30 | 50,000 | Learning was faster in early episodes but unstable overall. The agent occasionally defended well but also made sudden, erratic moves that led to missed returns. |
-| **7** | Higher gamma with short exploration window | 1e-4 | 0.999 | 32 | 1.0 | 0.05 | 0.05 | 50,000 | The agent showed smoother and more deliberate movements, tracking the ball more effectively and returning several volleys per episode. Strong coordination and visible improvement. |
-| **8** | Lower learning rate | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 0.10 | 200,000 | Agent made some progress early but quickly plateaued. Reduced exploration limited its ability to adapt and improve later in training. |
-| **9** | High gradient steps per update (more optimization per batch) | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 0.10 | 200,000 | Learning appeared faster and more confident within the same number of steps. Agent followed the ball more consistently but slightly over-adjusted during quick rallies. |
-| **10** | Low gamma with fast updates (**Best Model**) | 2e-4 | 0.97 | 32 | 1.0 | 0.03 | 0.10 | 200,000 | Agent displayed the most consistent and intelligent behavior — reacted quickly, maintained rallies, and intercepted most balls. Demonstrated reliable paddle control and adaptation. **Best performing model overall.** |
+| **Exp #** | **Description** | **Learning Rate** | **Gamma** | **Batch Size** | **Epsilon Start** | **Epsilon End** | **Exploration Fraction** | **Timesteps** | **Final Reward** | **Noted Behavior** |
+|:--:|:--|--:|--:|--:|--:|--:|--:|--:|--:|--|
+| **1** | Lower LR + longer exploration + low epsilon end | 5e-5 | 0.99 | 32 | 1.0 | 0.02 | 0.20 | 200k | −21 | Mostly random movement; agent failed to learn meaningful actions. |
+| **2** | Mid LR, higher gamma, bigger batch | 7.5e-5 | 0.995 | 64 | 1.0 | 0.02 | 0.30 | 100k | −21 | Limited paddle control; slow and inconsistent progress. |
+| **3** | Higher gamma + longer exploration | 1e-4 | 0.997 | 32 | 1.0 | 0.03 | 0.15 | 200k | −21 | Started following the ball occasionally; minor improvement. |
+| **4** | Small batch, faster target updates | 1e-4 | 0.99 | 16 | 1.0 | 0.05 | 0.10 | 50k | −21 | Unstable training; paddle moved erratically and missed often. |
+| **5** | Lower gamma (short-term reward) | 1e-4 | 0.95 | 32 | 1.0 | 0.05 | 0.10 | 50k | −21 | Agent reacted fast but lacked long-term control; poor play. |
+| **6** | Higher LR + larger batch | 2.5e-4 | 0.99 | 64 | 1.0 | 0.05 | 0.30 | 200k | −21 | Learned faster but unstable; paddle overshot ball frequently. |
+| **7** | Higher gamma + short exploration | 1e-4 | 0.999 | 32 | 1.0 | 0.05 | 0.05 | 200k | −21 | Improved tracking; smoother motion and longer volleys. |
+| **8** | Lower learning rate | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 0.10 | 200k | −21 | Plateaued early; agent stopped adapting mid-training. |
+| **9** | High gradient steps per update | 1e-4 | 0.99 | 32 | 1.0 | 0.01 | 0.10 | 200k | −21 | Slightly better tracking; some over-adjustment during volleys. |
+| **10** | Low gamma, fast updates (**Best Model**) | 2e-4 | 0.97 | 32 | 1.0 | 0.03 | 0.10 | 200k | −20 | Quick reactions, stable paddle control, and consistent rallies. |
+
 
 ---
 
