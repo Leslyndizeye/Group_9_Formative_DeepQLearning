@@ -1,12 +1,15 @@
 # Deep Q-Learning for Atari [Pong]
 
 ## Overview
-This project implements a Deep Q-Network (DQN) agent to play the Atari **[Game Name]** using Stable Baselines3 and Gymnasium. The implementation includes:
+This project implements a Deep Q-Network (DQN) agent to play the Atari Pong (ALE/Pong-v5) using Stable Baselines3 and Gymnasium. The implementation includes:
 
-- **Task 1**: Training script (`train.py`) with DQN agent, policy comparison (CNN vs MLP), and 10 hyperparameter experiments per team member
-- **Task 2**: Playing script (`play.py`) with trained model loading and GreedyQPolicy evaluation
-- Complete hyperparameter tuning documentation for 4 team members (40 total experiments)
-- Video demonstration of trained agent gameplay
+Task 1: Training script (train.py) that trains a DQN agent using CNN policy, compares performance against MLP policy, and performs 10 hyperparameter experiments per team member.
+
+Task 2: Playing script (play.py) that loads the trained model and evaluates the agent using GreedyQPolicy, rendering gameplay in real time.
+
+Hyperparameter tuning documentation: Complete table of all 40 experiments conducted by 4 team members.
+
+Video demonstration: Short clip showing the trained agent playing Pong using the play.py script.
 
 ## Team Members
 - **Nicolas Muhigi**
@@ -15,14 +18,19 @@ This project implements a Deep Q-Network (DQN) agent to play the Atari **[Game N
 - **Lesly Ndizeye**
 
 ## Environment: 
+Pong is a classic two-player table tennis game. You control the right paddle and compete against the left paddle controlled by the computer. The goal is to score points by making the ball pass the opponent’s paddle while defending your own. The challenge for the DQN agent lies in predicting the ball trajectory, timing paddle movements, and reacting quickly, requiring both short-term reflexes and long-term strategy.
 
-**Game Description**: [Brief description of the Atari game - what the objective is, how it's played, what makes it challenging]
+Environment ID: ALE/Pong-v5
 
-- **Environment ID**: `[GameName]NoFrameskip-v4` / `ALE/[GameName]-v5`
-- **Action Space**: Discrete([N]) - [List of actions: e.g., NOOP, FIRE, UP, DOWN, etc.]
-- **Observation Space**: Box(0, 255, (210, 160, 3), uint8) - RGB frames
-- **Preprocessing**: 84x84 grayscale, 4 frames stacked
-- **Difficulty**: Mode 0, Difficulty 0 (default)
+Action Space: Discrete(6) - NOOP, FIRE, RIGHT, LEFT, RIGHTFIRE, LEFTFIRE
+
+For training, typically only NOOP, UP, and DOWN are used.
+
+Observation Space: Box(0, 255, (210, 160, 3), uint8) - RGB frames
+
+Preprocessing: 84x84 grayscale, 4 frames stacked
+
+Difficulty: Mode 0, Difficulty 0 (default)
 
 ---
 
@@ -211,19 +219,44 @@ python play.py --model-path "models/Nicolas Muhigi/dqn_exp3_Nicolas_Muhigi.zip"
 
 ---
 
-### [Member 3 Name]'s Experiments
+### Deolinda Bio Bogore's Experiments
 
 #### Experimental Design
-[Description of experimental approach]
+Experimental Design
 
-[Copy the same table structure]
+For my experiments, I trained a DQN agent to play Pong (ALE/Pong-v5) using Stable-Baselines3 and CnnPolicy. I conducted 10 experiments with different hyperparameter combinations, varying learning rate, gamma, batch size, and epsilon decay. Each experiment ran for 100,000 training steps, and I tracked the agent’s reward per episode to observe its learning behavior.
+
+I used a frame-stacked vectorized Atari environment (VecFrameStack) with 4 frames per observation to help the network capture motion dynamics. The RewardPlotCallback was used to log episode rewards and generate reward trend plots.
+
+| Exp # | Learning Rate (lr) | Gamma (γ) | Batch Size | Epsilon (start→end) | Epsilon Decay | Observed Behavior                                                     | Final Reward |
+| ----- | ------------------ | --------- | ---------- | ------------------- | ------------- | --------------------------------------------------------------------- | ------------ |
+| 1     | 0.0001             | 0.99      | 32         | 1.0 → 0.05          | 0.1           | Agent collapsed immediately; very slow learning due to low LR.        | -21.0        |
+| 2     | 0.0005             | 0.95      | 64         | 1.0 → 0.05          | 0.1           | Agent lost all games; moderate LR and low gamma slowed learning.      | -21.0        |
+| 3     | 0.001              | 0.99      | 32         | 1.0 → 0.05          | 0.2           | High LR caused unstable Q-values; mostly random actions.              | -21.0        |
+| 4     | 0.0002             | 0.98      | 64         | 1.0 → 0.05          | 0.15          | Slight improvement; agent occasionally hit the ball.                  | -15.0        |
+| 5     | 0.0001             | 0.97      | 32         | 1.0 → 0.05          | 0.1           | Agent collapsed; gamma too low to learn sequences.                    | -21.0        |
+| 6     | 0.00005            | 0.99      | 64         | 1.0 → 0.05          | 0.05          | Extremely slow learning; agent mostly random.                         | -20.0        |
+| 7     | 0.0003             | 0.96      | 32         | 1.0 → 0.05          | 0.2           | Minor improvement; occasionally hits the ball, performance unstable.  | -18.0        |
+| 8     | 0.001              | 0.95      | 64         | 1.0 → 0.05          | 0.15          | High LR + low gamma; agent random, no meaningful learning.            | -21.0        |
+| 9     | 0.002              | 0.98      | 32         | 1.0 → 0.05          | 0.1           | Too high LR; agent fails to learn paddle control.                     | -21.0        |
+| 10    | 0.0005             | 0.97      | 64         | 1.0 → 0.05          | 0.1           | Moderate LR and gamma; still insufficient learning within 100k steps. | -21.0        |
 
 #### Observed Results
-[Copy the same results table structure]
+Across all experiments, the agent failed to achieve positive rewards within 100,000 training steps.
 
+Minor improvements were observed in experiments 4 and 7, where the agent occasionally hit the ball but still mostly lost (-15, -18).
+
+High learning rates (≥0.001) caused unstable Q-values, resulting in random behavior.
+
+Low learning rates (≤0.0001) led to extremely slow learning and immediate collapse.
 #### Analysis Summary
-[Copy the same analysis structure]
+The results confirm that 100,000 steps are insufficient for Pong using DQN with CNN policies.
 
+Optimal hyperparameters are likely moderate learning rates (0.0002–0.0005) and gamma (0.96–0.98), but longer training (≥1 million steps) is needed to see meaningful learning.
+
+The epsilon schedule did not allow enough exploration due to fast decay relative to the short training steps.
+
+Overall, the agent mostly collapsed or performed poorly, but the experiments provide insights into hyperparameter sensitivity and the effect of learning rate, gamma, batch size, and epsilon on performance
 ---
 
 ### [Member 4 Name]'s Experiments
@@ -319,23 +352,33 @@ A video demonstration of the trained agent is included showing:
 ## Key Findings & Conclusions
 
 ### Overall Hyperparameter Analysis
-[Summarize the most important findings from all team members' experiments]
+Across all experiments, we observed the following trends:
+
+Learning Rate (LR): Very high LR (e.g., 0.001–0.002) often caused unstable learning, with the agent failing to track the ball effectively. Lower LR (0.0001–0.0005) produced more stable learning, though too low slowed progress.
+
+Gamma (Discount Factor): Higher gamma values (0.98–0.99) sometimes made the agent too cautious, focusing on long-term rewards but reacting slower to the ball. Slightly lower gamma (0.97) with smaller batch sizes improved responsiveness.
+
+Batch Size: Smaller batch sizes (32) allowed faster updates and better adaptation to game dynamics, while larger batch sizes (64) made learning slower.
+
+Epsilon (Exploration): Gradual decay from 1.0 → 0.03 led to effective exploration initially and reliable exploitation later.
+
+Overall, experiments that balanced learning rate, gamma, and batch size while decaying epsilon slowly produced the most intelligent and consistent agent behavior.
 
 ### Best Configuration
 Based on our experiments, the best performing configuration was:
-- **Learning Rate**: [Value]
-- **Gamma**: [Value]
-- **Batch Size**: [Value]
-- **Exploration Fraction**: [Value]
-- **Final Epsilon**: [Value]
 
-**Performance**: [Average reward, episode length, etc.]
+Learning Rate: 0.0002
 
-### Lessons Learned
-1. [Key lesson 1]
-2. [Key lesson 2]
-3. [Key lesson 3]
-4. [Key lesson 4]
+Gamma: 0.97
+
+Batch Size: 32
+
+Exploration Fraction: 1.0
+
+Final Epsilon: 0.03
+
+Performance: The agent displayed the most consistent and intelligent behavior — reacted quickly, maintained rallies, and intercepted most balls. It demonstrated reliable paddle control and adaptation, making it the best performing model overall.
+
 
 ---
 
@@ -412,7 +455,6 @@ This project is for educational purposes as part of the Deep Q-Learning Formativ
 ---
 
 ## Acknowledgments
-- Course Instructor: [Instructor Name]
-- Teaching Assistants: [TA Names if applicable]
+- Course Instructor: Marvin Ogore
 - Stable Baselines3 Team
 - OpenAI Gymnasium Team
