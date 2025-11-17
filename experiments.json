@@ -1,5 +1,5 @@
 {
-    "tracked_experiments": 11,
+    "tracked_experiments": 12,
     "experiments": [
         {
             "tracked_experiments": 1,
@@ -169,10 +169,10 @@
         {
             "member_name": "Nicolas Muhigi",
             "experiment_number": 10,
-            "timestamp": "2025-11-17T02:24:06.709471",
+            "timestamp": "2025-11-17T15:29:52.388214",
             "hyperparameters": {
-                "learning_rate": 0.0003,
-                "gamma": 0.995,
+                "learning_rate": 0.0001,
+                "gamma": 0.99,
                 "batch_size": 32,
                 "epsilon_start": 1.0,
                 "epsilon_end": 0.02,
@@ -180,7 +180,7 @@
             },
             "observed_behavior": "Training completed",
             "final_reward": null,
-            "notes": "Balanced baseline setup; smooth epsilon decay with high gamma"
+            "notes": "Balanced LR, stable gamma, strong exploration schedule"
         }
     ]
 }
