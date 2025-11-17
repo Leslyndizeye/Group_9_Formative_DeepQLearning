@@ -1,9 +1,13 @@
 {
+<<<<<<< HEAD
+    "tracked_experiments": 12,
+=======
     "total_tracked_experiments": 20,
     "team_members": [
         "Nicolas Muhigi",
         "Ndizeye Lesly"
     ],
+>>>>>>> 53ddfb5285b4cd2200075910a667cc9dfffb380f
     "experiments": [
         {
             "member_name": "Nicolas Muhigi",
@@ -152,10 +156,10 @@
         {
             "member_name": "Nicolas Muhigi",
             "experiment_number": 10,
-            "timestamp": "2025-11-17T02:24:06.709471",
+            "timestamp": "2025-11-17T15:29:52.388214",
             "hyperparameters": {
-                "learning_rate": 0.0003,
-                "gamma": 0.995,
+                "learning_rate": 0.0001,
+                "gamma": 0.99,
                 "batch_size": 32,
                 "epsilon_start": 1.0,
                 "epsilon_end": 0.02,
@@ -163,6 +167,9 @@
             },
             "observed_behavior": "Training completed",
             "final_reward": null,
+<<<<<<< HEAD
+            "notes": "Balanced LR, stable gamma, strong exploration schedule"
+=======
             "notes": "Balanced baseline setup; smooth epsilon decay with high gamma"
         },
         {
@@ -324,6 +331,7 @@
             "observed_behavior": "Balanced LR and gamma, stable training",
             "final_reward": null,
             "notes": "Final experiment optimized"
+>>>>>>> 53ddfb5285b4cd2200075910a667cc9dfffb380f
         }
     ]
 }
