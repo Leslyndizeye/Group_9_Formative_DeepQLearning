@@ -157,22 +157,28 @@ Nicolas conducted 10 comprehensive hyperparameter experiments exploring extreme 
 
 ### Nicolas Muhigi — Experiments
 
-| Exp | lr      | gamma | batch | eps_start | eps_end | eps_decay | Notes |
-|-----|---------|--------|--------|------------|----------|------------|--------|
-| 1   | 1e-06   | 0.999 | 32     | 0.9        | 0.01     | 0.1        | Very slow learning with long-term reward focus |
-| 2   | 0.001   | 0.9   | 64     | 1.0        | 0.2      | 0.1        | Fast but unstable learning; short-term focus |
-| 3   | 5e-05   | 0.99  | 8      | 1.0        | 0.05     | 0.1        | Noisy but robust due to tiny batch & long exploration |
-| 4   | 0.0002  | 0.995 | 128    | 1.0        | 0.01     | 0.1        | Large batch with rapid decay; stable but converges fast |
-| 5   | 7e-05   | 0.999 | 32     | 0.5        | 0.05     | 0.1        | Semi-greedy start; strong long-term reward optimization |
-| 6   | 0.0003  | 0.96  | 32     | 1.0        | 0.6      | 0.1        | Highly exploratory; wide state-space coverage |
-| 7   | 2e-05   | 0.98  | 48     | 1.0        | 0.02     | 0.1        | Very slow epsilon decay; agent stays random longer |
-| 8   | 0.0001  | 0.99  | 32     | 1.0        | 0.005    | 0.1        | Very greedy final policy; heavy exploitation |
-| 9   | 0.0008  | 0.92  | 64     | 0.3        | 0.01     | 0.1        | Low exploration and high LR; unstable but fast learner |
-| 10  | 0.0001  | 0.99  | 32     | 1.0        | 0.02     | 0.1        | Balanced LR and gamma; strong exploration schedule |
+
+| Exp | lr      | gamma | batch | eps_start | eps_end | eps_decay | Steps   | Final Reward | Notes |
+|-----|---------|-------|-------|-----------|---------|-----------|--------|--------------|-------|
+| 1   | 1e-06   | 0.999 | 32    | 0.9       | 0.01    | 0.1       | 300000 | -21          | Very slow learning; focuses on long-term rewards. |
+| 2   | 0.001   | 0.9   | 64    | 1.0       | 0.2     | 0.1       | 300000 | -21          | Fast but unstable; short-term reward focused. |
+| 3   | 5e-05   | 0.99  | 8     | 1.0       | 0.05    | 0.1       | 300000 | -21          | Small batch, long exploration; robust but noisy learning. |
+| 4   | 0.0002  | 0.995 | 128   | 1.0       | 0.01    | 0.1       | 300000 | -21          | Large batch, rapid decay; stable but converges fast. |
+| 5   | 7e-05   | 0.999 | 32    | 0.5       | 0.05    | 0.1       | 300000 | -21          | Semi-greedy start; emphasizes long-term rewards. |
+| 6   | 0.0003  | 0.96  | 32    | 1.0       | 0.6     | 0.1       | 300000 | -21          | Highly exploratory; covers wide state-space. |
+| 7   | 2e-05   | 0.98  | 48    | 1.0       | 0.02    | 0.1       | 300000 | -21          | Slow epsilon decay; random behavior lasts longer. |
+| 8   | 0.0001  | 0.99  | 32    | 1.0       | 0.005   | 0.1       | 300000 | -21          | Very greedy policy; strong exploitation. |
+| 9   | 0.0008  | 0.92  | 64    | 0.3       | 0.01    | 0.1       | 300000 | -21          | Low exploration, high LR; unstable fast learning. |
+| 10  | 0.0001  | 0.99  | 32    | 1.0       | 0.02    | 0.1       | 250000 | -21          | Balanced LR and gamma; steady exploration and learning. |
+
+### Insight and Overall Takeaways
+
+The experiments show that hyperparameters strongly affect DQN learning: higher learning rates speed up training but can be unstable, while lower rates favor slow, steady convergence; high gamma values improve long-term reward optimization, whereas lower gamma prioritizes short-term gains; small batch sizes create noisy but robust learning, while large batches stabilize updates but converge faster; slow epsilon decay prolongs exploration, and fast decay shifts quickly to exploitation. Overall, careful tuning of learning rate, gamma, batch size, and epsilon schedule is essential to balance stability, speed, and exploration, and no single configuration dominates all scenarios, highlighting the importance of task-specific adjustments.
+
 
 **To Run Nicolas's Experiments:**
 ```bash
-python nicolas_experiment.py --timesteps 500000
+python play.py --model-path "models/Nicolas Muhigi/dqn_exp3_Nicolas_Muhigi.zip"
 ```
 
 ---
