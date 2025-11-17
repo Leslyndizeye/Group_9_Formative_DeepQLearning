@@ -1,28 +1,10 @@
 {
-    "tracked_experiments": 11,
-    "tracked_experiments": 3,
+    "total_tracked_experiments": 20,
+    "team_members": [
+        "Nicolas Muhigi",
+        "Ndizeye Lesly"
+    ],
     "experiments": [
-        {
-            "tracked_experiments": 1,
-            "experiments": [
-                {
-                    "member_name": "Ndizeye Lesly",
-                    "experiment_number": 1,
-                    "timestamp": "2025-11-14T02:35:17.274882",
-                    "hyperparameters": {
-                        "learning_rate": 0.0001,
-                        "gamma": 0.99,
-                        "batch_size": 32,
-                        "epsilon_start": 1.0,
-                        "epsilon_end": 0.05,
-                        "epsilon_decay": 0.1
-                    },
-                    "observed_behavior": "Agent trained successfully",
-                    "final_reward": null,
-                    "notes": "Baseline hyperparameters"
-                }
-            ]
-        },
         {
             "member_name": "Nicolas Muhigi",
             "experiment_number": 1,
@@ -182,6 +164,166 @@
             "observed_behavior": "Training completed",
             "final_reward": null,
             "notes": "Balanced baseline setup; smooth epsilon decay with high gamma"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 1,
+            "timestamp": "2025-11-14T02:35:17.274882",
+            "hyperparameters": {
+                "learning_rate": 0.0001,
+                "gamma": 0.99,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent trained successfully",
+            "final_reward": null,
+            "notes": "Baseline hyperparameters"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 2,
+            "timestamp": "2025-11-14T03:12:45.982104",
+            "hyperparameters": {
+                "learning_rate": 0.00015,
+                "gamma": 0.995,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent learned slightly faster",
+            "final_reward": null,
+            "notes": "Increased gamma"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 3,
+            "timestamp": "2025-11-14T04:05:12.654332",
+            "hyperparameters": {
+                "learning_rate": 0.00005,
+                "gamma": 0.99,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.2
+            },
+            "observed_behavior": "Training stable but slower",
+            "final_reward": null,
+            "notes": "Lower learning rate, higher batch"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 4,
+            "timestamp": "2025-11-14T04:58:27.112478",
+            "hyperparameters": {
+                "learning_rate": 0.0002,
+                "gamma": 0.997,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.01,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent converged faster but more erratic",
+            "final_reward": null,
+            "notes": "Higher learning rate, lower epsilon end"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 5,
+            "timestamp": "2025-11-14T05:45:53.987111",
+            "hyperparameters": {
+                "learning_rate": 0.0001,
+                "gamma": 0.995,
+                "batch_size": 16,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.05
+            },
+            "observed_behavior": "Smaller batch, less stable reward",
+            "final_reward": null,
+            "notes": "Small batch size"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 6,
+            "timestamp": "2025-11-14T06:32:19.564832",
+            "hyperparameters": {
+                "learning_rate": 0.00012,
+                "gamma": 0.998,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.02,
+                "epsilon_decay": 0.15
+            },
+            "observed_behavior": "Agent explored longer, better policy",
+            "final_reward": null,
+            "notes": "High gamma and small epsilon end"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 7,
+            "timestamp": "2025-11-14T07:21:04.234900",
+            "hyperparameters": {
+                "learning_rate": 0.00008,
+                "gamma": 0.993,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Slower convergence, smoother reward",
+            "final_reward": null,
+            "notes": "Lower LR, higher batch"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 8,
+            "timestamp": "2025-11-14T08:10:33.892321",
+            "hyperparameters": {
+                "learning_rate": 0.00018,
+                "gamma": 0.996,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.03,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent faster exploration, some instability",
+            "final_reward": null,
+            "notes": "High LR and gamma"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 9,
+            "timestamp": "2025-11-14T09:05:47.122445",
+            "hyperparameters": {
+                "learning_rate": 0.0001,
+                "gamma": 0.995,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.01,
+                "epsilon_decay": 0.2
+            },
+            "observed_behavior": "Very low epsilon end, converged fast",
+            "final_reward": null,
+            "notes": "Small final epsilon"
+        },
+        {
+            "member_name": "Ndizeye Lesly",
+            "experiment_number": 10,
+            "timestamp": "2025-11-14T09:55:21.876553",
+            "hyperparameters": {
+                "learning_rate": 0.00015,
+                "gamma": 0.997,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Balanced LR and gamma, stable training",
+            "final_reward": null,
+            "notes": "Final experiment optimized"
         }
     ]
 }
