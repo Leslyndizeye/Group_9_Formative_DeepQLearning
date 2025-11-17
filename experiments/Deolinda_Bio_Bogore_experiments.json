@@ -1,0 +1,165 @@
+{
+    "tracked_experiments": 10,
+    "experiments": [
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 1,
+            "timestamp": "2025-11-16T17:44:40.053116",
+            "hyperparameters": {
+                "learning_rate": 0.0001,
+                "gamma": 0.99,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.0001, gamma=0.99, batch=32"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 2,
+            "timestamp": "2025-11-16T18:09:21.897746",
+            "hyperparameters": {
+                "learning_rate": 0.0005,
+                "gamma": 0.95,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.0005, gamma=0.95, batch=64"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 3,
+            "timestamp": "2025-11-16T18:24:53.095699",
+            "hyperparameters": {
+                "learning_rate": 0.001,
+                "gamma": 0.99,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.2
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.001, gamma=0.99, batch=32"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 4,
+            "timestamp": "2025-11-16T18:48:27.984899",
+            "hyperparameters": {
+                "learning_rate": 0.0002,
+                "gamma": 0.98,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.15
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -15.0,
+            "notes": "Final reward: -15.0, lr=0.0002, gamma=0.98, batch=64"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 5,
+            "timestamp": "2025-11-16T19:03:50.081983",
+            "hyperparameters": {
+                "learning_rate": 0.0001,
+                "gamma": 0.97,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.0001, gamma=0.97, batch=32"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 6,
+            "timestamp": "2025-11-16T19:28:46.428655",
+            "hyperparameters": {
+                "learning_rate": 5e-05,
+                "gamma": 0.99,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.05
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -20.0,
+            "notes": "Final reward: -20.0, lr=5e-05, gamma=0.99, batch=64"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 7,
+            "timestamp": "2025-11-16T19:44:11.489122",
+            "hyperparameters": {
+                "learning_rate": 0.0003,
+                "gamma": 0.96,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.2
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -18.0,
+            "notes": "Final reward: -18.0, lr=0.0003, gamma=0.96, batch=32"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 8,
+            "timestamp": "2025-11-16T20:30:15.949527",
+            "hyperparameters": {
+                "learning_rate": 0.001,
+                "gamma": 0.95,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.15
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.001, gamma=0.95, batch=64"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 9,
+            "timestamp": "2025-11-16T20:40:07.278257",
+            "hyperparameters": {
+                "learning_rate": 0.002,
+                "gamma": 0.98,
+                "batch_size": 32,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.002, gamma=0.98, batch=32"
+        },
+        {
+            "member_name": "Deolinda Bio Bogore",
+            "experiment_number": 10,
+            "timestamp": "2025-11-16T20:54:12.355316",
+            "hyperparameters": {
+                "learning_rate": 0.0005,
+                "gamma": 0.97,
+                "batch_size": 64,
+                "epsilon_start": 1.0,
+                "epsilon_end": 0.05,
+                "epsilon_decay": 0.1
+            },
+            "observed_behavior": "Agent collapsing",
+            "final_reward": -21.0,
+            "notes": "Final reward: -21.0, lr=0.0005, gamma=0.97, batch=64"
+        }
+    ]
+}

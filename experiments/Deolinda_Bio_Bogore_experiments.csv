@@ -1,0 +1,11 @@
+Member Name,Experiment #,Timestamp,Learning Rate,Gamma,Batch Size,Epsilon Start,Epsilon End,Epsilon Decay,Observed Behavior,Final Reward,Notes
+Deolinda Bio Bogore,1,2025-11-16T17:44:40.053116,0.0001,0.99,32,1.0,0.05,0.1,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.0001, gamma=0.99, batch=32"
+Deolinda Bio Bogore,2,2025-11-16T18:09:21.897746,0.0005,0.95,64,1.0,0.05,0.1,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.0005, gamma=0.95, batch=64"
+Deolinda Bio Bogore,3,2025-11-16T18:24:53.095699,0.001,0.99,32,1.0,0.05,0.2,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.001, gamma=0.99, batch=32"
+Deolinda Bio Bogore,4,2025-11-16T18:48:27.984899,0.0002,0.98,64,1.0,0.05,0.15,Agent collapsing,-15.0,"Final reward: -15.0, lr=0.0002, gamma=0.98, batch=64"
+Deolinda Bio Bogore,5,2025-11-16T19:03:50.081983,0.0001,0.97,32,1.0,0.05,0.1,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.0001, gamma=0.97, batch=32"
+Deolinda Bio Bogore,6,2025-11-16T19:28:46.428655,5e-05,0.99,64,1.0,0.05,0.05,Agent collapsing,-20.0,"Final reward: -20.0, lr=5e-05, gamma=0.99, batch=64"
+Deolinda Bio Bogore,7,2025-11-16T19:44:11.489122,0.0003,0.96,32,1.0,0.05,0.2,Agent collapsing,-18.0,"Final reward: -18.0, lr=0.0003, gamma=0.96, batch=32"
+Deolinda Bio Bogore,8,2025-11-16T20:30:15.949527,0.001,0.95,64,1.0,0.05,0.15,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.001, gamma=0.95, batch=64"
+Deolinda Bio Bogore,9,2025-11-16T20:40:07.278257,0.002,0.98,32,1.0,0.05,0.1,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.002, gamma=0.98, batch=32"
+Deolinda Bio Bogore,10,2025-11-16T20:54:12.355316,0.0005,0.97,64,1.0,0.05,0.1,Agent collapsing,-21.0,"Final reward: -21.0, lr=0.0005, gamma=0.97, batch=64"
