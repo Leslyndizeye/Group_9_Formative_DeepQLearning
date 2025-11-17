@@ -334,15 +334,9 @@ A video demonstration of the trained agent is included showing:
 - The agent using GreedyQPolicy for optimal performance
 - Real-time interaction with the [Game Name] environment
 
-**To generate video:**
-```bash
-python play.py --record --episodes 5
-```
-
-Videos are saved in the `videos/` directory.
 
 ### Video Link
-[Insert your video link here - e.g., Google Drive, YouTube, etc.]
+[Screen recording](https://www.loom.com/share/2fe29bb104f84722b3af6263f39a4057)
 
 ---
 
