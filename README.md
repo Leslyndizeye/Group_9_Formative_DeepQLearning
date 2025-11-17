@@ -202,45 +202,12 @@ python play.py --model-path "models/Nicolas Muhigi/dqn_exp3_Nicolas_Muhigi.zip"
 
 ### Insights and Discussion
 
-1. **Learning Rate**  
-   - A very low learning rate (e.g., 5e-5 in Experiment 1) led to slow, almost static behavior — the agent barely improved across episodes.  
-   - Moderate learning rates (1e-4 to 2e-4) produced much better results, with the agent learning faster and achieving smoother paddle control.  
-   - A high learning rate (2.5e-4) made training faster initially but unstable, causing erratic paddle motion.  
-   → *Conclusion:* Moderate learning rates balance exploration and convergence speed effectively.
-
-2. **Gamma (Discount Factor)**  
-   - Lower gamma values (0.95–0.97) made the agent more reactive to immediate rewards, improving reflexes but sometimes ignoring long-term play.  
-   - Higher gamma values (0.997–0.999) encouraged long-term reward optimization, allowing smoother tracking and better anticipation of ball direction.  
-   → *Conclusion:* Gamma around **0.97–0.999** yielded the most balanced and strategic play, depending on learning rate and exploration.
-
-3. **Batch Size**  
-   - Smaller batch sizes (16) introduced high variance in updates, making learning noisy and unpredictable.  
-   - Larger batch sizes (64) stabilized training but slowed convergence.  
-   - A medium batch size (32) proved the most reliable — enough to smooth learning while maintaining steady updates.
-
-4. **Exploration (Epsilon Schedule)**  
-   - Too high exploration fractions (0.3–0.4) delayed improvement as the agent kept acting randomly.  
-   - Too low (0.05) forced early exploitation, sometimes leading to stagnation.  
-   - Balanced decay values around **0.1–0.15** allowed the agent to explore enough before focusing on learned strategies.
-
-5. **Timesteps and Training Duration**  
-   - Short runs (50,000–100,000) were insufficient for meaningful learning; the agent stayed nearly random.  
-   - Longer runs (200,000) allowed noticeable behavioral improvement — better positioning and consistent rallies.  
-   → *Conclusion:* Increasing timesteps beyond 200k would likely yield even stronger learning.
-
-6. **Best Model (Experiment 10)**  
-   - The agent trained with **learning rate = 2e-4**, **gamma = 0.97**, and **exploration fraction = 0.10** showed the best paddle control, stable tracking, and longest volleys.  
-   - It balanced reaction speed and consistency better than any other configuration.  
-   - This combination’s faster updates and lower gamma helped the agent adapt quickly and avoid getting stuck in suboptimal strategies.
-
----
-
-### Overall Takeaways
-- **Stable learning** required a balance between exploration and exploitation — excessive exploration caused random movement, while premature exploitation froze learning.  
-- **Learning rate and gamma** were the most influential parameters. Both had to be tuned together for stability and performance.  
-- **Longer training time** (≥ 200,000 steps) was essential; shorter runs barely developed meaningful policies.  
-- **Experiment 10** achieved the best results both visually and behaviorally, showing the agent effectively learning to anticipate ball motion and sustain rallies.
-
+- **Learning Rate:** Too low caused no learning; moderate rates (1e-4 – 2e-4) gave faster and steadier improvement.  
+- **Gamma:** Higher values (0.997 – 0.999) improved long-term strategy, while lower values made play short-sighted.  
+- **Batch Size:** Medium (32 – 64) balanced update stability and learning speed; very small batches caused noise.  
+- **Exploration:** Balanced decay (0.10 – 0.15) worked best. Too long kept the agent random, too short froze learning.  
+- **Training Duration:** Only runs with 200 k steps showed meaningful progress; shorter runs failed to learn control.  
+- **Best Configuration:** *Experiment 10* (LR = 2e-4, Gamma = 0.97, Batch = 32) achieved the most natural, responsive gameplay.
 
 ---
 
