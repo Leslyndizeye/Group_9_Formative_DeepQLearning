@@ -5,7 +5,8 @@
     "total_tracked_experiments": 20,
     "team_members": [
         "Nicolas Muhigi",
-        "Ndizeye Lesly"
+        "Ndizeye Lesly",
+        "Leslie Isaro",
     ],
 >>>>>>> 53ddfb5285b4cd2200075910a667cc9dfffb380f
     "experiments": [
@@ -332,6 +333,166 @@
             "final_reward": null,
             "notes": "Final experiment optimized"
 >>>>>>> 53ddfb5285b4cd2200075910a667cc9dfffb380f
-        }
+        },
+        {
+  "member_name": "Leslie Isaro",
+  "experiment_number": 1,
+  "timestamp": "2025-11-16T09:05:11.102345",
+  "hyperparameters": {
+    "learning_rate": 0.00005,
+    "gamma": 0.99,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.02,
+    "epsilon_decay": 0.20
+  },
+  "observed_behavior": "Barely moved; stayed random, no learning.",
+  "final_reward": null,
+  "notes": "Lower learning rate + longer exploration + lower epsilon end"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 2,
+  "timestamp": "2025-11-16T09:52:39.558912",
+  "hyperparameters": {
+    "learning_rate": 0.000075,
+    "gamma": 0.995,
+    "batch_size": 64,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.02,
+    "epsilon_decay": 0.30
+  },
+  "observed_behavior": "Tracked slowly; limited progress with short training.",
+  "final_reward": null,
+  "notes": "Mid learning rate, higher gamma, bigger batch"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 3,
+  "timestamp": "2025-11-16T10:34:08.734501",
+  "hyperparameters": {
+    "learning_rate": 0.0001,
+    "gamma": 0.997,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.03,
+    "epsilon_decay": 0.15
+  },
+  "observed_behavior": "Some ball tracking; brief volleys; slow but steady.",
+  "final_reward": null,
+  "notes": "Higher gamma with slightly longer exploration"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 4,
+  "timestamp": "2025-11-16T11:16:44.219873",
+  "hyperparameters": {
+    "learning_rate": 0.0001,
+    "gamma": 0.99,
+    "batch_size": 16,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.05,
+    "epsilon_decay": 0.10
+  },
+  "observed_behavior": "Jittery random moves; unstable and uncoordinated.",
+  "final_reward": null,
+  "notes": "Small batch size with faster target updates"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 5,
+  "timestamp": "2025-11-16T12:01:27.906152",
+  "hyperparameters": {
+    "learning_rate": 0.0001,
+    "gamma": 0.95,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.05,
+    "epsilon_decay": 0.10
+  },
+  "observed_behavior": "Very reactive, poor control; no lasting improvement.",
+  "final_reward": null,
+  "notes": "Lower gamma (short-term focus)"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 6,
+  "timestamp": "2025-11-16T12:47:55.481223",
+  "hyperparameters": {
+    "learning_rate": 0.00025,
+    "gamma": 0.99,
+    "batch_size": 64,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.05,
+    "epsilon_decay": 0.30
+  },
+  "observed_behavior": "Faster early learning but unstable play; frequent misses.",
+  "final_reward": null,
+  "notes": "Higher learning rate with larger batch"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 7,
+  "timestamp": "2025-11-16T13:29:21.167804",
+  "hyperparameters": {
+    "learning_rate": 0.0001,
+    "gamma": 0.999,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.05,
+    "epsilon_decay": 0.05
+  },
+  "observed_behavior": "Smoother movement; tracked ball better; multiple volleys.",
+  "final_reward": null,
+  "notes": "Higher gamma with short exploration"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 8,
+  "timestamp": "2025-11-16T14:11:59.743118",
+  "hyperparameters": {
+    "learning_rate": 0.0001,
+    "gamma": 0.99,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.01,
+    "epsilon_decay": 0.10
+  },
+  "observed_behavior": "Plateaued early; reduced exploration froze adaptation.",
+  "final_reward": null,
+  "notes": "Lower learning rate run"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 9,
+  "timestamp": "2025-11-16T14:58:36.315779",
+  "hyperparameters": {
+    "learning_rate": 0.0001,
+    "gamma": 0.99,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.01,
+    "epsilon_decay": 0.10
+  },
+  "observed_behavior": "Slight improvement; followed ball better with some over-adjustment.",
+  "final_reward": null,
+  "notes": "High gradient steps per update"
+},
+{
+  "member_name": "Leslie Isaro",
+  "experiment_number": 10,
+  "timestamp": "2025-11-16T15:41:58.982441",
+  "hyperparameters": {
+    "learning_rate": 0.0002,
+    "gamma": 0.97,
+    "batch_size": 32,
+    "epsilon_start": 1.0,
+    "epsilon_end": 0.03,
+    "epsilon_decay": 0.10
+  },
+  "observed_behavior": "Quick, consistent returns; best paddle control and rallies.",
+  "final_reward": null,
+  "notes": "Low gamma with fast updates — Best model"
+}
     ]
 }
