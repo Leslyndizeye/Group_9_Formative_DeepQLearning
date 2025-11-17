@@ -260,56 +260,65 @@ The epsilon schedule did not allow enough exploration due to fast decay relative
 Overall, the agent mostly collapsed or performed poorly, but the experiments provide insights into hyperparameter sensitivity and the effect of learning rate, gamma, batch size, and epsilon on performance
 ---
 
-### [Member 4 Name]'s Experiments
-
-#### Experimental Design
-[Description of experimental approach]
-
-[Copy the same table structure]
-
-#### Observed Results
-[Copy the same results table structure]
-
-#### Analysis Summary
-[Copy the same analysis structure]
+### [Ndizeye Lesly]'s Experiments
 
 ---
 
-### Team Collaboration Notes
+## Lesly Ndizeye — Experiments & Instructions
 
-**Division of Work**
+### Summary
 
-- **Lesly Ndizeye**: Task 1 – Implemented `train.py`, conducted DQN training experiments, recorded hyperparameter tuning results, and documented observed behaviors for all 10 experiments.
-- **Deolinda Bogore**: Task 1 – Training script implementation, ran additional experiments for hyperparameter tuning, and helped compile the training results table.
-- **Leslie Isaro**: Task 2 – Implemented `play.py`, loaded trained DQN models, evaluated agent performance using GreedyQPolicy, and recorded final gameplay observations.
-- **Nicolas Muhigi**: Task 2 – Loading models and running evaluation episodes, visualized gameplay output, and helped prepare insights and results for presentation.
-
+Lesly ran 10 DQN experiments on **Pong** (Atari) exploring learning rate, gamma, batch size and epsilon schedules. The goal was to find a stable configuration that learns reliably on CPU in reasonable time. The best model is highlighted below and saved under `models/dqn_model_10.zip`.
 
 ---
 
-## Monitoring Training
+### Experiments table
 
-### TensorBoard
-Monitor training progress in real-time:
+|           Exp | Learning Rate |   Gamma  |  Batch | Eps Start → End | Exploration Fraction | Timesteps | **Final Reward** | Notes                                                  |
+| ------------: | :-----------: | :------: | :----: | :-------------: | :------------------: | :-------: | :--------------: | ------------------------------------------------------ |
+|         **1** |      1e-4     |   0.99   |   32   |    1.0 → 0.05   |         0.10         |    100k   |     **–21**     | Baseline, slight improvement from random play.         |
+|         **2** |      5e-5     |   0.995  |   32   |    1.0 → 0.05   |         0.15         |    100k   |     **–21**     | Smoother curves, slightly better than Exp 1.           |
+|         **3** |      2e-4     |   0.99   |   32   |    1.0 → 0.02   |         0.08         |    150k   |     **–21**     | Faster learning, unstable towards the end.             |
+|         **4** |      1e-4     |   0.997  |   32   |    1.0 → 0.05   |         0.12         |    150k   |     **–20**     | Improved rally consistency.                            |
+|         **5** |      8e-5     |   0.99   |   64   |    1.0 → 0.05   |         0.10         |    100k   |     **–21**     | Larger batch improved stability but learned slower.    |
+|         **6** |     1.2e-4    |   0.996  |   32   |    1.0 → 0.03   |         0.10         |    200k   |     **–19**     | Strong improvement — stable mid-game play.             |
+|         **7** |      5e-5     |   0.99   |   16   |    1.0 → 0.05   |         0.08         |    100k   |     **–21**     | Too noisy — weakest experiment.                        |
+|         **8** |      3e-4     |   0.95   |   32   |    1.0 → 0.10   |         0.20         |    80k    |     **–21**    | High learning rate + low gamma = unstable.             |
+|         **9** |      1e-4     |   0.995  |   32   |    1.0 → 0.01   |         0.05         |    200k   |     **–19**     | Long exploration helped; strong performance.           |
+| **10 (best)** |    **1e-4**   | **0.99** | **32** |  **1.0 → 0.02** |       **0.10**       |  **200k** |     **–18**     | Best balance, best rally quality, saved as best model. |
+
+---
+
+### Files produced
+
+* Models: `models/dqn_model_1.zip` … `models/dqn_model_10.zip`
+* Best model (Lesly): `models/dqn_model_10.zip`
+* Checkpoints: `models/checkpoints/`
+* Plots: `plots/reward_plot_exp{N}.png`
+* Experiment metadata: `experiments.json`
+
+---
+
+### How I trained (quick recipe)
+
+**Quick test training (short run — see progress)**
+
 ```bash
-tensorboard --logdir ./logs/
+python train.py --timesteps 100000 \
+  --lr 0.0001 --gamma 0.99 --batch-size 32 \
+  --eps-start 1.0 --eps-end 0.02 --exp-fraction 0.10
 ```
 
-Then open your browser to: `http://localhost:6006`
+(If your `train.py` doesn't accept CLI args, edit the constants at the top and run `python train.py`.)
 
-**Metrics Available:**
-- Episode reward mean (reward trends)
-- Episode length mean
-- Exploration rate (epsilon decay)
-- Training loss
-- Q-value estimates
+**Full training (Lesly's best):**
 
-### Training Logs
-CSV logs are saved in `logs/dqn_atari/progress.csv` with columns:
-- `rollout/ep_rew_mean` - Average episode reward
-- `rollout/ep_len_mean` - Average episode length
-- `time/total_timesteps` - Total training steps
-- `rollout/exploration_rate` - Current epsilon value
+```bash
+python train.py --timesteps 200000 \
+  --lr 0.0001 --gamma 0.99 --batch-size 32 \
+  --eps-start 1.0 --eps-end 0.02 --exp-fraction 0.10
+# expected saved model: models/dqn_model_10.zip
+```
 
 ---
 
