@@ -263,14 +263,14 @@ Lesly ran 10 DQN experiments on **Pong** (Atari) exploring learning rate, gamma,
 |           Exp | Learning Rate |   Gamma  |  Batch | Eps Start → End | Exploration Fraction | Timesteps | **Final Reward** | Notes                                                  |
 | ------------: | :-----------: | :------: | :----: | :-------------: | :------------------: | :-------: | :--------------: | ------------------------------------------------------ |
 |         **1** |      1e-4     |   0.99   |   32   |    1.0 → 0.05   |         0.10         |    100k   |     **–21**     | Baseline, slight improvement from random play.         |
-|         **2** |      5e-5     |   0.995  |   32   |    1.0 → 0.05   |         0.15         |    100k   |     **–21**     | Smoother curves, slightly better than Exp 1.           |
+|         **2** |      5e-5     |   0.994  |   32   |    1.0 → 0.05   |         0.15         |    100k   |     **–21**     | Smoother curves, slightly better than Exp 1.           |
 |         **3** |      2e-4     |   0.99   |   32   |    1.0 → 0.02   |         0.08         |    150k   |     **–21**     | Faster learning, unstable towards the end.             |
 |         **4** |      1e-4     |   0.997  |   32   |    1.0 → 0.05   |         0.12         |    150k   |     **–20**     | Improved rally consistency.                            |
 |         **5** |      8e-5     |   0.99   |   64   |    1.0 → 0.05   |         0.10         |    100k   |     **–21**     | Larger batch improved stability but learned slower.    |
 |         **6** |     1.2e-4    |   0.996  |   32   |    1.0 → 0.03   |         0.10         |    200k   |     **–20**     | Strong improvement — stable mid-game play.             |
 |         **7** |      5e-5     |   0.99   |   16   |    1.0 → 0.05   |         0.08         |    100k   |     **–21**     | Too noisy — weakest experiment.                        |
 |         **8** |      3e-4     |   0.95   |   32   |    1.0 → 0.10   |         0.20         |    80k    |     **–21**    | High learning rate + low gamma = unstable.             |
-|         **9** |      1e-4     |   0.995  |   32   |    1.0 → 0.01   |         0.05         |    200k   |     **–20**     | Long exploration helped; strong performance.           |
+|         **9** |      1e-4     |   0.998  |   32   |    1.0 → 0.01   |         0.05         |    200k   |     **–20**     | Long exploration helped; strong performance.           |
 | **10 (best)** |    **1e-4**   | **0.99** | **32** |  **1.0 → 0.05** |       **0.1**       |  **500k** |     **–14.60**     | Best balance, best rally quality, saved as best model. |
 
 ---
