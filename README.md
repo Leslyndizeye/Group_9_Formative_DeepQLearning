@@ -271,7 +271,7 @@ Lesly ran 10 DQN experiments on **Pong** (Atari) exploring learning rate, gamma,
 |         **7** |      5e-5     |   0.99   |   16   |    1.0 → 0.05   |         0.08         |    100k   |     **–21**     | Too noisy — weakest experiment.                        |
 |         **8** |      3e-4     |   0.95   |   32   |    1.0 → 0.10   |         0.20         |    80k    |     **–21**    | High learning rate + low gamma = unstable.             |
 |         **9** |      1e-4     |   0.995  |   32   |    1.0 → 0.01   |         0.05         |    200k   |     **–20**     | Long exploration helped; strong performance.           |
-| **10 (best)** |    **1e-4**   | **0.99** | **32** |  **1.0 → 0.05** |       **0.1**       |  **200k** |     **–14.60**     | Best balance, best rally quality, saved as best model. |
+| **10 (best)** |    **1e-4**   | **0.99** | **32** |  **1.0 → 0.05** |       **0.1**       |  **500k** |     **–14.60**     | Best balance, best rally quality, saved as best model. |
 
 ---
 
